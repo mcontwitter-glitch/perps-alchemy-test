@@ -49,6 +49,12 @@ try:
     check("xp_system", "XP" in html)
     check("risk_rating_ui", "skull" in html.lower() or "risk" in html.lower())
     check("gold_hex_fixed", "#FFD700" not in html)  # old-gold hex should be gone
+    # ---- MAU5 BUILD (Sept 14) — new feature checks ----
+    check("ws_ticker", "pfd-ws-ticker" in html and "pfd-ws-track" in html, "Wall Street ticker strip")
+    check("tab_dropdown_nav", "pfd-tab-dd-menu" in html and "pfd-tab-dd-item" in html, "top-tab dropdown accordion nav")
+    check("rerolled_kept", "preRerollStatus" in html and "rerolledAt" in html, "re-rolled calls kept in history")
+    check("wr_denominators", "allDaysWinRate" in html and "all-days" in html, "decisive WR + all-days WR + n=")
+    check("shared_record", "record.json" in html and "CANONICAL RECORD" in html, "shared canonical track record")
     res["ui_ok"] = res["checks_passed"] == res["checks_total"]
 except FileNotFoundError:
     check("app_file", False, "canon copy missing")

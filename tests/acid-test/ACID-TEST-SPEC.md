@@ -8,11 +8,11 @@ This is the **exact** test suite BIGagent404 runs on the schedule (AM + PM daily
 
 - **ACID SCORE** = `checks_passed / checks_total * 100`
 - **ACID TEST LAW (Mau5, Sept 7 2026):** score **> 69% = PASS**, **<= 69% = FAIL**
-- The label in scheduled reports reads **INFRA 13/13 PASS** (renamed from "ACID: 100 PASS" so nobody misreads infra health as call accuracy).
+- The label in scheduled reports reads **INFRA 18/18 PASS** (renamed from "ACID: 100 PASS" so nobody misreads infra health as call accuracy).
 
-## The 13 checks
+## The 18 checks
 
-### A) App build integrity — run against repo `index.html` (7 checks)
+### A) App build integrity — run against repo `index.html` (13 checks)
 
 | # | Check | Passes when |
 |---|-------|-------------|
@@ -23,6 +23,11 @@ This is the **exact** test suite BIGagent404 runs on the schedule (AM + PM daily
 | 5 | `music_modes` | "Lofi" present (music mode system) |
 | 6 | `xp_system` | "XP" present |
 | 7 | `gold_hex_fixed` | the old `#FFD700` hex is GONE from the build (black & gold palette uses the new hexes) |
+| 7b | `ws_ticker` | `pfd-ws-ticker` + `pfd-ws-track` present — the Wall Street quote strip (Mau5 build Sept 14) |
+| 7c | `tab_dropdown_nav` | `pfd-tab-dd-menu` + `pfd-tab-dd-item` present — top-tab dropdown accordion nav |
+| 7d | `rerolled_kept` | `preRerollStatus` + `rerolledAt` present — re-rolled calls stay in history (integrity fix) |
+| 7e | `wr_denominators` | `allDaysWinRate` + `all-days` present — decisive WR + all-days WR + n= shown |
+| 7f | `shared_record` | `record.json` + `CANONICAL RECORD` present — shared canonical track record |
 
 ### B) Live data pipeline — real API calls (4 checks)
 

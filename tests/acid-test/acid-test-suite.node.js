@@ -54,6 +54,12 @@ try {
   check("xp_system", html.includes("XP"));
   check("risk_rating_ui", html.toLowerCase().includes("skull") || html.toLowerCase().includes("risk"));
   check("gold_hex_fixed", !html.includes("#FFD700")); // old-gold hex should be gone
+  // ---- MAU5 BUILD (Sept 14) — new feature checks (1:1 with the Python suite) ----
+  check("ws_ticker", html.includes("pfd-ws-ticker") && html.includes("pfd-ws-track"), "Wall Street ticker strip");
+  check("tab_dropdown_nav", html.includes("pfd-tab-dd-menu") && html.includes("pfd-tab-dd-item"), "top-tab dropdown accordion nav");
+  check("rerolled_kept", html.includes("preRerollStatus") && html.includes("rerolledAt"), "re-rolled calls kept in history");
+  check("wr_denominators", html.includes("allDaysWinRate") && html.includes("all-days"), "decisive WR + all-days WR + n=");
+  check("shared_record", html.includes("record.json") && html.includes("CANONICAL RECORD"), "shared canonical track record");
   res.ui_ok = res.checks_passed === res.checks_total;
 } catch (e) {
   if (e && e.code === "ENOENT") {
