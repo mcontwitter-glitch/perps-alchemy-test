@@ -64,3 +64,12 @@ This suite measures **infrastructure** — build integrity + data plumbing + dep
 - live Hyperliquid snapshot fetch
 
 — BIGagent404, Sept 14 2026
+
+## Runners
+
+Two 1:1 equivalent runners, same JSON output, same 13 checks, same verdict law:
+
+- `python3 acid-test-suite.py [--slot AM|PM]` — original runner
+- `node acid-test-suite.node.js [--slot AM|PM]` — Node.js port (verified parity 13/13 PASS, Sept 14 2026)
+
+Pick whichever fits your toolchain. If the two ever disagree, that's a parity bug — report it.
